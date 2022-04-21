@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -15,6 +16,37 @@ import java.util.concurrent.TimeUnit;
  * @date 2022/4/11
  */
 public class SeleniumTest {
+    @Test
+    public void dayLogTest() throws InterruptedException {
+        //配置浏览器驱动地址
+        System.setProperty("webdriver.chrome.driver",
+                "D:\\java\\driver\\chromedriver.exe");
+        //打开Chrome浏览器
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().window().maximize();
+
+        //打开百度网站
+        webDriver.get("https://dev.info2soft.com/index.php?m=my&f=index");
+        //TimeUnit.SECONDS.sleep(5);
+
+        webDriver.findElement(By.id("account")).sendKeys("lisy1");
+        webDriver.findElement(By.xpath("//*[@id=\"loginPanel\"]/div/div[2]/form/table/tbody/tr[2]/td/input")).sendKeys("977721Fs");
+        webDriver.findElement(By.xpath("//*[@id=\"submit\"]")).click();
+
+        webDriver.get("https://dev.info2soft.com/index.php?m=doc&f=create&objectType=custom&objectID=0&libID=0&t=html#app=doc");
+
+        final WebElement element = webDriver.findElement(By.xpath("//*[@id=\"lib_chosen\"]"));
+        element.click();
+
+
+        Select select = new Select(element);
+        select.selectByValue("5");
+
+
+//        webDriver.findElement(By.xpath("//*[@id=\"module_chosen\"]/a")).sendKeys("李石岩");
+
+
+    }
 
     @Test
     public void test() throws InterruptedException {
