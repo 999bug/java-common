@@ -20,7 +20,7 @@ public class SeleniumTest {
     public void dayLogTest() throws InterruptedException {
         //配置浏览器驱动地址
         System.setProperty("webdriver.chrome.driver",
-                "D:\\java\\driver\\chromedriver.exe");
+                "D:\\java\\driver\\chromedriver_win32\\chromedriver.exe");
         //打开Chrome浏览器
         WebDriver webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
@@ -30,22 +30,19 @@ public class SeleniumTest {
         //TimeUnit.SECONDS.sleep(5);
 
         webDriver.findElement(By.id("account")).sendKeys("lisy1");
-        webDriver.findElement(By.xpath("//*[@id=\"loginPanel\"]/div/div[2]/form/table/tbody/tr[2]/td/input")).sendKeys("977721Fs");
+        webDriver.findElement(By.xpath("//*[@id=\"loginPanel\"]/div/div[2]/form/table/tbody/tr[2]/td/input")).sendKeys("Lsy@1997,.?");
         webDriver.findElement(By.xpath("//*[@id=\"submit\"]")).click();
 
         webDriver.get("https://dev.info2soft.com/index.php?m=doc&f=create&objectType=custom&objectID=0&libID=0&t=html#app=doc");
+        webDriver.get("https://dev.info2soft.com/index.php?m=doc&f=create&objectType=custom&objectID=0&libID=0&t=html&tid=z8zpi9cs#app=doc");
 
-        final WebElement element = webDriver.findElement(By.xpath("//*[@id=\"lib_chosen\"]"));
-        element.click();
-
-
-        Select select = new Select(element);
-        select.selectByValue("5");
+        final WebElement element1 = webDriver.findElement(By.xpath("/html/body/main/div/div/div/form/table/tbody/tr[1]/td[1]/div/a/span"));
+        element1.sendKeys("员工日周报");
 
 
 //        webDriver.findElement(By.xpath("//*[@id=\"module_chosen\"]/a")).sendKeys("李石岩");
 
-
+        TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
     }
 
     @Test

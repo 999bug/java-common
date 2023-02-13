@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.info2soft</groupId>
             <artifactId>i2up-java-sdk</artifactId>
-            <version>[7.1.55, 7.1.70]</version>
+            <version>[7.1.74]</version>
         </dependency>
 
         <dependency>

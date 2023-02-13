@@ -21,7 +21,7 @@ import java.util.Objects;
 public class AppHighAvailabilityTest {
 
     private static Auth auth;
-    private static String uuid = TestConfig.testUuid;
+    private static String uuid = "B09539DA-939D-253B-AA2B-8C97E0564860";
     private static AppHighAvailability appHighAvailability;
 
     @BeforeClass
@@ -41,7 +41,7 @@ public class AppHighAvailabilityTest {
     @Test
     public void T01_listNicInfo() {
         try {
-            Response r = auth.client.get(String.format(TestConfig.rapDataUrl, "218")); // 获取请求数据
+            Response r = auth.client.get(String.format(TestConfig.rapDataUrl, "1251")); // 获取请求数据
             StringMap args = new StringMap().putAll(Objects.requireNonNull(r.jsonToMap())); // 填充请求数据
             Map rs = appHighAvailability.listNicInfo(args); // 发送请求
             Assert.assertNotNull(rs); // 检查结果
@@ -81,6 +81,21 @@ public class AppHighAvailabilityTest {
     public void T04_listHA() {
         try {
             Map rs = appHighAvailability.listHA(new StringMap()); // 发送请求
+            Assert.assertNotNull(rs); // 检查结果
+        } catch (I2softException e) {
+            e.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void testHaStatus() {
+        try {
+            Response r = auth.client.get(String.format(TestConfig.rapDataUrl, "214")); // 获取请求数据
+//            StringMap args = new StringMap().putAll(Objects.requireNonNull(r.jsonToMap())); // 填充请求数据
+            StringMap args = new StringMap();
+            args.put("ha_uuid", "B09539DA-939D-253B-AA2B-8C97E0564860");
+            Map rs = appHighAvailability.listHAStatus(args); // 发送请求
             Assert.assertNotNull(rs); // 检查结果
         } catch (I2softException e) {
             e.printStackTrace();

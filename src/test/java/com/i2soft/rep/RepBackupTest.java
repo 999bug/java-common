@@ -68,7 +68,7 @@ public class RepBackupTest {
     public void T03_listRepBackupStatus() {
         try {
             Response r = auth.client.get(String.format(TestConfig.rapDataUrl, "454")); // 获取请求数据
-            StringMap args = new StringMap().putAll(Objects.requireNonNull(r.jsonToMap())); // 填充请求数据
+            StringMap args = new StringMap().put("rep_uuids", "B093084D-299D-5F91-7471-E2B26E388FE4").put("force_refresh", 1); // 填充请求数据
             Map rs = repBackup.listRepBackupStatus(args); // 发送请求
             Assert.assertNotNull(rs); // 检查结果
         } catch (I2softException e) {
