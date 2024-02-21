@@ -1,0 +1,2 @@
+生成 windows dll 文件
+g++ -shared -Wl,--kill-at,--output-def,cal.def,--out-implib,cal.a -o cal.dll cal.cpp
