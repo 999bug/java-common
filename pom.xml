@@ -18,6 +18,19 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.google.flatbuffers</groupId>
+            <artifactId>flatbuffers-java</artifactId>
+            <version>1.12.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.10.0</version> <!-- 版本号可能有更新，可以根据实际情况调整 -->
+        </dependency>
+
+
+        <dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna</artifactId>
             <version>5.2.0</version>

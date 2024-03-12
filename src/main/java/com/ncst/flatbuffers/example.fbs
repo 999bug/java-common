@@ -1,0 +1,6 @@
+table MyObject {
+  id: int;
+  name: string;
+}
+
+root_type MyObject;

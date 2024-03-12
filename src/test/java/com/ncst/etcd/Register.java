@@ -43,6 +43,10 @@ public class Register {
         return getKVClient().put(bytesOf(key), bytesOf(value)).get().getHeader();
     }
 
+    public Response.Header put(String key, ByteSequence value) throws Exception {
+        return getKVClient().put(bytesOf(key), value).get().getHeader();
+    }
+
     /**
      * 将字符串转为客户端所需的ByteSequence实例
      *
