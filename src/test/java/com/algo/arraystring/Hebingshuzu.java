@@ -1,4 +1,4 @@
-package com.algo;
+package com.algo.arraystring;
 
 import org.junit.Test;
 
