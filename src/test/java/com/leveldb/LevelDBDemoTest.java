@@ -23,7 +23,7 @@ import org.junit.Test;
  */
 public class LevelDBDemoTest {
  
-	private static final String PATH = "data/leveldb";
+	private static final String PATH = "E:\\recWarehouse\\cd25b833-13e3-47cf-af26-03e42f2c96cd\\e6b0583f-da51-4cfa-abd0-b4d9d82dda83\\centos7_1698929857_4d3e0f1e_0\\0\\.meta\\leveldb";
 	private static final Charset CHARSET = Charset.forName("utf-8");
 	private static final File FILE = new File(PATH);
 	
@@ -76,6 +76,47 @@ public class LevelDBDemoTest {
 			// 默认snapshot为当前
 			readOptions.snapshot(snapshot);
 			DBIterator it = db.iterator(readOptions);
+			while (it.hasNext()) {
+				Map.Entry<byte[], byte[]> entry = it.next();
+				String key = new String(entry.getKey(), CHARSET);
+				String value = new String(entry.getValue(), CHARSET);
+				System.out.println("key: " + key + " value: " + value);
+				if (key.equals("key-01")) {
+					System.out.println("".equals(value));
+				}
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (db != null) {
+				try {
+					db.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	@Test
+	public void readFromSnapshotTes22t() {
+		DBFactory factory = new Iq80DBFactory();
+		File file = new File(PATH);
+		Options options = new Options();
+		DB db = null;
+		try {
+			db = factory.open(file, options);
+//			// 读取当前快照，重启服务仍能读取，说明快照持久化至磁盘，
+//			Snapshot snapshot = db.getSnapshot();
+//			// 读取操作
+//			ReadOptions readOptions = new ReadOptions();
+//			// 遍历中swap出来的数据，不应该保存在memtable中。
+//			readOptions.fillCache(false);
+//			// 默认snapshot为当前
+//			readOptions.snapshot(snapshot);
+			DBIterator it = db.iterator();
 			while (it.hasNext()) {
 				Map.Entry<byte[], byte[]> entry = it.next();
 				String key = new String(entry.getKey(), CHARSET);
