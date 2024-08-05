@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.flatbuffers.FlatBufferBuilder;
 import com.ncst.etcd.Register;
 import com.ncst.flatbuffers.JsonObj;
-import com.ncst.flatbuffers.MyObject;
 import io.etcd.jetcd.ByteSequence;
 import org.junit.Before;
 import org.junit.Test;
@@ -142,18 +141,18 @@ public class JsonTest {
 //        System.out.println("FlatBuffer put key num: " + num + " use time " + l);
 //    }
 
-    private ByteBuffer setData(String name, int id, FlatBufferBuilder builder) {
-        int nameOffset = builder.createString(name);
-        MyObject.startMyObject(builder);
-        MyObject.addId(builder, id);
-        MyObject.addName(builder, nameOffset);
-        int myObjectOffset = MyObject.endMyObject(builder);
-
-        // 结束FlatBuffer构建
-        builder.finish(myObjectOffset);
-        return builder.dataBuffer();
-        // 获取序列化后的数据
-//        byte[] serializedData = builder.sizedByteArray();
-//        return ByteSequence.from(serializedData);
-    }
+//    private ByteBuffer setData(String name, int id, FlatBufferBuilder builder) {
+////        int nameOffset = builder.createString(name);
+//////        MyObject.startMyObject(builder);
+//////        MyObject.addId(builder, id);
+//////        MyObject.addName(builder, nameOffset);
+//////        int myObjectOffset = MyObject.endMyObject(builder);
+////
+////        // 结束FlatBuffer构建
+////        builder.finish(myObjectOffset);
+////        return builder.dataBuffer();
+//        // 获取序列化后的数据
+////        byte[] serializedData = builder.sizedByteArray();
+////        return ByteSequence.from(serializedData);
+//    }
 }
