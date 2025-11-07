@@ -1,10 +1,8 @@
 package com.ncst.jvm;
 
 import org.junit.Test;
-import sun.awt.image.ImageWatched;
 
 import java.io.*;
-import java.lang.management.LockInfo;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
