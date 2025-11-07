@@ -1,0 +1,15 @@
+<!DOCTYPE aspectj PUBLIC
+        "-//AspectJ//DTD//EN"
+        "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <weaver>
+        <!-- 指定要织入的包 -->
+        <include within="com.ncst.reflact.demo1..*"/>
+<!--        <include within="com.example.aspect..*"/>-->
+    </weaver>
+
+    <aspects>
+        <!-- 注册切面 -->
+        <aspect name="com.ncst.reflact.demo1.MethodTracingAspect"/>
+    </aspects>
+</aspectj>
